@@ -1,0 +1,23 @@
+This repo is for the publicly-available materials generated in/for CCTC.  Everyone is welcome to do merge requests or file issues regardless of status; you are judged by the quality of your work, not your rank.
+
+== link:https://common.cybbh.io/contributing/contributing/latest/general-guidelines.html[Contribution Guidelines]
+[subs=normal]
+----
+├── link:../../../misc[misc]
+│                                                                                (  )  _      _ _ _ _ _ _ _ _
+└── link:../../../[modules]                                                                       || <  \_ _ /             /
+       │                                                                          ||  |                  /
+       ├── link:../../../modules/windows[windows]                                                                ||  |     C Y B E R    \
+       ├── link:../../[**networking**]                                                             ||  |                    \
+       ├── link:../../../modules/re[re]                                                                     ||  /            _ _ _ _ _ _\
+       ├── link:../../../modules/security[security]                                                               ||<_ _ _ _ _ _ _ /
+       └── link:../../../modules/linux[linux]                                                                  ||
+              │                                                                   ||
+              ├── link:../[activities]                                                      ||
+              │       │                                                           ||
+              │       ├── link:./[**resources**]                                               ||
+              │       └── link:../[references]                                              ||
+              ├── link:../../heat[heat]                                                            ||
+              └── link:../../slides[slides]                                                        \ || /
+                                                                              . \ \ / /.
+----

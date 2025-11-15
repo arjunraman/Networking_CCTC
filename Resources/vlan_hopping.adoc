@@ -1,0 +1,33 @@
+----
+a=Ether()
+a.dst="ff:ff:ff:ff:ff:ff"
+a.src="01:02:03:aa:bb:cc"
+a.type=0x8100            #VLAN Tag will Follow
+
+b=Dot1Q()
+b.vlan=1                 #Native VLAN
+b.type=0x8100            #Another VLAN Tag will Follow
+
+c=Dot1Q()
+c.vlan=20                #Target VLAN
+c.type=0x0800            #IPv4 or any other Ethertype that is encapsulated
+
+d=IP()
+d.proto=6                #specifies that TCP is encapsulated. Change to 1 for ICMP or 17 for UDP.
+d.src="10.10.0.40"       #Any source IP
+d.dst="172.16.82.106"    #Target IP
+
+e=TCP()
+e.sport=54321
+e.dport=80
+
+f="message"
+
+a.show()
+b.show()
+c.show()
+d.show()
+e.show()
+
+sendp(a/b/c/d/e/f)
+----

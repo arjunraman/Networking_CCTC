@@ -1,0 +1,131 @@
+# ---- WELCOME TO CCTC NETWORKING RECON ACTIVITY ---- #
+
+You do not have sudo rights on this system other than for the following:
+
+    sudo nmap -sU
+
+Below are a series of useful commands installed on this Internet_Host to use while you are in this course.
+
+    1. To view your IP address and interface information:
+        a. current =        ip address (ip addr)
+        b. deprecated =     ifconfig
+
+    2. To view your ARP cache:
+        a. current =        ip neighbor (ip nei)
+        b. deprecated =     arp -a
+
+    3. To view open TCP and UDP sockets:
+        a. current = 
+            i. TCP =        ss -antlp
+            ii. UDP =       ss -anulp
+        b. deprecated =     netstat
+
+    4. To view active processes:
+        a. static =         ps -elf
+        b. real-time =      top or htop
+
+    5. To open file manager from the command line or X11 connection:
+        a. nautilus
+        b. pcmanfm
+
+    6. Web Browsers:
+        a. Firefox
+        b. Chromium
+        c. Konqueror
+
+    7. To open images from the command line or X11 connection:
+        a. Eye of Gnome =                   eog [file]
+        b. Nomacs =                         nomacs [file]
+        c. Eye of Mate =                    eom [file]
+        d. GNU Image Manipulation Program = gimp [file]
+
+    8. Network scanning:
+        a. nmap
+            -sT = TCP Full connection
+                nmap -sT 10.10.0.40 -p 21-23,80
+            -sS = TCP SYN scanning
+                sudo nmap -sS 10.10.0.40 -p 21-23,80
+            -Pn = Disable ping sweep
+                nmap -Pn -sT 10.10.0.40 -p 21-23,80
+            -sU = UDP scanning
+                sudo nmap -sU 10.10.0.40 -p 1000-2000
+        b. zenmap
+        c. netcat
+            TCP: nc -nzvw1 10.10.0.40 21-23 80
+            UDP: nc -unzvw1 10.10.0.40 53 69
+        d. ping
+            ping 10.10.0.40
+        e. traceroute
+            traceroute 172.16.82.106
+
+    9. Network Utilization:
+        a. iftop
+        b. iptraf-ng
+
+    10. Packet Manipulation (requires root privileges):
+        a. scapy
+        b. hping3
+        c. yersinia     yersinia -G
+
+    11. Packet Sniffing (requires root privileges):
+        a. Wireshark
+        b. tcpdump
+        c. p0f
+        d. tshark
+
+    12. Banner Grabbing:
+        a. netcat
+            Client: nc 10.10.0.40 22
+            Listener: nc -lvp 1234
+        b. telnet
+            telnet 10.10.0.40
+            telnet 10.10.0.40 2323
+            telnet localhost 1111
+        c. wget
+            wget -r http://10.10.0.40
+            wget -r http://10.10.0.40:8080
+            wget -r ftp://10.10.0.40
+        d. curl
+            curl http://10.10.0.40
+            curl http://10.10.0.40:8080
+            curl ftp://10.10.0.40
+
+    13. DNS Query:
+        a. whois
+            whois google.com
+        b. dig
+            Records:
+                A - IPv4
+                    dig google.com A
+                AAAA - IPv6
+                    dig google.com AAAA
+                NS - Name Server
+                    dig google.com NS
+                SOA - Start of Authority
+                    dig google.com SOA
+                MX - Mail Server
+                    dig google.com MX
+                TXT - Human readable message
+                    dig google.com TXT
+
+    14. Remote access:
+        a. ssh
+            ssh student@10.10.0.40
+            ssh student@10.10.0.40 -p 2222
+            ssh student@localhost -p 2222
+        b. telnet
+            telnet 10.10.0.40
+            telnet 10.10.0.40 2323
+            telnet localhost 1111
+
+    15. File Transfer:
+        a. scp
+            scp student@10.10.0.40:/usr/share/cctc/flag.png .
+            scp -P 2222 student@10.10.0.40:/usr/share/cctc/flag.png .
+            scp -P 2222 student@localhost:/usr/share/cctc/flag.png .
+            scp flag.png student@10.10.0.40:
+            scp -P 2222 flag.png student@10.10.0.40:
+            scp -P 2222 flag.png student@localhost:
+        b. netcat
+            nc 10.10.0.40 1234 < flag.png
+            nc -lvp 1234 > flag.png
